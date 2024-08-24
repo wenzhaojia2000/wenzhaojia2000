@@ -14,6 +14,28 @@ Here are some ideas to get you started:
 - ⚡ Fun fact: ...
 -->
 
+Useful command to list all commits made by you in the current working repository at a certain date. Just stick the following at the end of your `.bashrc` file:
+
+```bash
+# Logs git commits by you on a certain date
+commitsMade () {
+        git log --pretty='format:%C(yellow)%h %Creset%s%Cred%d' --branches \
+    --after="$1 0:00" --before="$1 23:59" --author "`git config user.name`";
+}
 ```
-+pehD7KV+bP0xj3vFfp5VYxzevJ36q/8ZWXboAQxlzE39Tavi8PHcNfoCiHJFsw1N43tilsgOIAHVxtscT7aQlD4H04pO/MNxe9LfCx+jbiQ0IfbAnyTBkkIhEvfIOBICZiljKUZzL1LeV7paYpuInXxLIpP5tAMhTe+TYp8zIcIrKpGhW8bM2b7W6rncGp00K96n21HprDcEVRxNehIDN3wxXdQhxd/OihM37LkeL9otfLK7v6/BiGpE0EppRNm
+
+Now both these commands list commits made today:
+```sh
+$ commitsMade today
+$ commitsMade
+```
+
+This command lists commits made yesterday:
+```sh
+$ commitsMade yesterday
+```
+
+And this on an arbitary date:
+```sh
+$ commitsMade 2024-08-02
 ```
